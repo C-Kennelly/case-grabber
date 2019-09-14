@@ -8,7 +8,7 @@ namespace case_grabber.Models
         public DbSet<Item> Items {get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(Environment.GetEnvironmentVariable("case_grabberDBString"));
+            optionsBuilder.UseMySql(Environment.GetEnvironmentVariable("CASELAW_DBSTRING"));
         }
     }
 
