@@ -1,4 +1,4 @@
-namespace case_grabber.Models
+namespace case_grabber.Models.CaseStore
 
 {
     public class Item

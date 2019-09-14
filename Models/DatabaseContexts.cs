@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
+using case_grabber.Models.CaseStore;
 
 namespace case_grabber.Models
 {
