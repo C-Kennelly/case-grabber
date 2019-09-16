@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Runtime.Serialization.Json;
+using System.Xml.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
@@ -21,7 +22,7 @@ namespace case_grabber
 //            string apiKey = Environment.GetEnvironmentVariable("CASELAW_KEY");
 //            Console.WriteLine("Using key: {0}", apiKey);
 
-            var endpoints = MakeCall().Result;
+            var endpoints = MakeCall("https://api.case.law").Result;
 
             foreach(string key in endpoints.Keys)
             {
@@ -32,11 +33,12 @@ namespace case_grabber
 
         }
 
-        private static async Task<Dictionary<string, string>> MakeCall()
+        private static async Task<Dictionary<string, string>> MakeCall(string endpoint)
         {
             client.DefaultRequestHeaders.Accept.Clear();
-            var streamTask = client.GetStreamAsync("https://api.case.law");
-
+            var streamTask = client.GetStreamAsync(endpoint);
+        
+//            var xSerializer = new XmlSerializer(typeof(Endpoints));
             var serializer = new DataContractJsonSerializer(typeof(Endpoints));
             var endpoints = serializer.ReadObject(await streamTask) as Endpoints;
 
