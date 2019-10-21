@@ -2,7 +2,7 @@
 A little command-line app to pull cases from https://case.law and explore them in a local database.
 
 
-## Environment Variables needed to run
+#### Environment Variables needed to run
 
 1. **CASELAW_KEY**
   * The API key from https://case.law used to make requests.  (need to register to get account)
